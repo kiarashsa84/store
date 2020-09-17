@@ -1524,6 +1524,8 @@ class Ui_Form(object):
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
+        
+        """ 
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
@@ -1535,6 +1537,7 @@ class Ui_Form(object):
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
+        """
         self.pushButton = QtWidgets.QPushButton(self.groupBox_3)
         self.pushButton.setGeometry(QtCore.QRect(140, 120, 131, 34))
         self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -2678,6 +2681,24 @@ class Ui_Form(object):
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
+    def add_table(self):
+        self.kala = self.comboBox.currentText()
+        self.code = 200+self.comboBox.currentIndex()
+        self.vahed = self.comboBox_2.currentText()
+        list_e = []
+
+
+        for i in range(10):
+            self.tab = self.tableWidget.item(i,0)
+            if self.tab.text() !='':
+                list_e.append(i)
+            else :
+                pass
+        self.Row = len(list_e)
+        self.tableWidget.setItem(self.Row , 0 , QTableWidgetItem(self.kala))
+        self.tableWidget.setItem(self.Row , 1 , QTableWidgetItem(str(self.code)))
+        self.tableWidget.setItem(self.Row , 2 , QTableWidgetItem(str(self.vahed)))
+
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Store"))
@@ -2702,19 +2723,19 @@ class Ui_Form(object):
         self.comboBox.setItemText(11, _translate("Form", "11"))
         self.comboBox.setItemText(12, _translate("Form", "12"))
         self.comboBox_2.setItemText(0, _translate("Form", "Choose"))
-        self.comboBox_2.setItemText(1, _translate("Form", "100"))
-        self.comboBox_2.setItemText(2, _translate("Form", "101"))
-        self.comboBox_2.setItemText(3, _translate("Form", "102"))
-        self.comboBox_2.setItemText(4, _translate("Form", "103"))
-        self.comboBox_2.setItemText(5, _translate("Form", "104"))
-        self.comboBox_2.setItemText(6, _translate("Form", "105"))
-        self.comboBox_2.setItemText(7, _translate("Form", "106"))
-        self.comboBox_2.setItemText(8, _translate("Form", "107"))
-        self.comboBox_2.setItemText(9, _translate("Form", "108"))
-        self.comboBox_2.setItemText(10, _translate("Form", "109"))
-        self.comboBox_2.setItemText(11, _translate("Form", "110"))
-        self.comboBox_2.setItemText(12, _translate("Form", "111"))
-        self.comboBox_2.setItemText(13, _translate("Form", "112"))
+        self.comboBox_2.setItemText(1, _translate("Form", "Kg"))
+        self.comboBox_2.setItemText(2, _translate("Form", "number"))
+#        self.comboBox_2.setItemText(3, _translate("Form", "102"))
+#        self.comboBox_2.setItemText(4, _translate("Form", "103"))
+#        self.comboBox_2.setItemText(5, _translate("Form", "104"))
+#        self.comboBox_2.setItemText(6, _translate("Form", "105"))
+#        self.comboBox_2.setItemText(7, _translate("Form", "106"))
+#        self.comboBox_2.setItemText(8, _translate("Form", "107"))
+#        self.comboBox_2.setItemText(9, _translate("Form", "108"))
+#        self.comboBox_2.setItemText(10, _translate("Form", "109"))
+#        self.comboBox_2.setItemText(11, _translate("Form", "110"))
+#        self.comboBox_2.setItemText(12, _translate("Form", "111"))
+#        self.comboBox_2.setItemText(13, _translate("Form", "112"))
         self.pushButton.setText(_translate("Form", "Add to list"))
         self.groupBox_2.setTitle(_translate("Form", "New Commodity :"))
         self.pushButton_4.setText(_translate("Form", "Invoicing"))
@@ -2738,6 +2759,8 @@ class Ui_Form(object):
         self.pushButton_20.setText(_translate("Form", "="))
         self.pushButton_21.setText(_translate("Form", "+"))
         self.pushButton_22.setText(_translate("Form", "Delete"))
+
+
         item = self.tableWidget.verticalHeaderItem(0)
         item.setText(_translate("Form", "1"))
         item = self.tableWidget.verticalHeaderItem(1)
@@ -2796,6 +2819,10 @@ class Ui_Form(object):
         self.pushButton_23.setText(_translate("Form", "Clear List"))
         self.pushButton_24.setText(_translate("Form", "Total :"))
 
+        self.pushButton.clicked.connect(lambda : self.add_table())
+
+
+
 
 if __name__ == "__main__":
     import sys
@@ -2804,6 +2831,11 @@ if __name__ == "__main__":
     ui = Ui_Form()
     ui.setupUi(Form)
     Form.show()
+        
+
+
+
+
 
 
     #############################################add stuff 
