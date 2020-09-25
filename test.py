@@ -2707,6 +2707,31 @@ class Ui_Form(object):
 
 
 
+    def total(self):
+        for currentitem in self.tableWidget.selectedItems():
+            self.row = currentitem.row()
+            self.culmn = currentitem.column()
+
+        if (self.culmn == 5):
+            self.p = self.tableWidget.item(self.row , 3)
+            self.a = self.tableWidget.item(self.row , 4)
+
+            self.a = self.a.text()
+            self.p = self.p.text()
+            
+            print(self.a , '  ' , self.p , '   ' , type(self.p) , '  ' , type(self.a))
+
+            if (self.a!='' and self.a!=None and self.p!='' and self.p!=None):
+                self.to = float(self.p)*float(self.a)
+                self.tableWidget.setItem(self.row , 5,QTableWidgetItem(str(self.to)))
+            
+            else :
+                self.tableWidget.setItem(self.row,5 , QTableWidgetItem("Error"))
+        else :
+            pass
+
+
+
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Store"))
@@ -2789,10 +2814,10 @@ class Ui_Form(object):
         item.setText(_translate("Form", "Price"))
         
         item = self.tableWidget.horizontalHeaderItem(4)
-        item.setText(_translate("Form", "Total"))
+        item.setText(_translate("Form", "Amount of"))
 
         item = self.tableWidget.horizontalHeaderItem(5)
-        item.setText(_translate("Form", "Amuont of"))
+        item.setText(_translate("Form", "Total"))
         
         item = self.tableWidget.horizontalHeaderItem(6)
         item.setText(_translate("Form", "Clear"))
@@ -2823,6 +2848,8 @@ class Ui_Form(object):
         self.pushButton_24.setText(_translate("Form", "Total :"))
 
         self.pushButton.clicked.connect(lambda : self.add_table())
+        self.tableWidget.doubleClicked.connect(lambda : self.total())
+        self.pushButton_23.clicked.connect(lambda : self.tableWidget.clear())
 
 
 
