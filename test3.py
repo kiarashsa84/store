@@ -56,6 +56,15 @@ class Ui_Del(object):
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
+
+    def check_line(self):
+        self.t1 = self.lineEdit.text()
+        self.t2 = self.lineEdit_2.text()
+        if (self.t1!='' and self.t1!=None and self.t2!='' and self.t2!=None):
+            return(self.t1 , self.t2)
+        else : 
+            return(-1, -1)
+
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Remove Stuff"))

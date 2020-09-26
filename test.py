@@ -2761,6 +2761,13 @@ class Ui_Form(object):
         else : 
             pass  
 
+
+    def check_remove(self, class_3):
+        t1 , t2 = d3.check_line()
+        if(t1!=-1, t2!=-1):
+            self.comboBox.removeItem(int(t2))
+        
+
     
 
 
@@ -2910,12 +2917,15 @@ if __name__ == "__main__":
     ui.pushButton_2.clicked.connect(lambda : di2.exec_())
     d2.pushButton.clicked.connect(lambda : d2.check_line())
     d2.pushButton.clicked.connect(lambda : ui.check(d2))
+    d2.pushButton.clicked.connect(lambda : di2.close())
 
     #############################################remove
     d3 = D3.Ui_Del()
     di3 = QtWidgets.QDialog()
     d3.setupUi(di3)
     ui.pushButton_3.clicked.connect(lambda : di3.exec_())
+    d3.pushButton.clicked.connect(lambda :   ui.check_remove(d3))
+    d3.pushButton.clicked.connect(lambda : di3.close())
     #############################################Print
     d4 = D4.Ui_Dialog()
     di4 = QtWidgets.QDialog()
