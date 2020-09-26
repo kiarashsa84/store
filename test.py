@@ -2732,6 +2732,40 @@ class Ui_Form(object):
 
 
 
+
+    def sum_all(self):
+        jam = 0
+        for i in range(10):
+            self.cu = self.tableWidget.item(i  , 5)
+            if (self.cu.text()!='' and self.cu.text()!=None):
+                jam += float(self.cu.text())
+
+                self.lineEdit_4.setText(str(jam))
+
+
+    
+    def    sum_mahsol(self):
+        variable=0
+        for i  in  range(10):
+            self.item_sum_5=self.tableWidget.item(i,5)
+            if   (self.item_sum_5.text()!=None  and  self.item_sum_5.text()!=''):
+                self.item_sum_5=float(self.item_sum_5.text())
+                variable=variable+self.item_sum_5
+                self.lineEdit_4.setText(str(variable))
+
+
+    def check(self , class_1):
+        t1 , t2 = class_1.check_line()
+        if (t1!=-1 and t2!=-1):
+            self.comboBox.addItem(str(t1))
+        else : 
+            pass  
+
+    
+
+
+
+
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Store"))
@@ -2850,6 +2884,7 @@ class Ui_Form(object):
         self.pushButton.clicked.connect(lambda : self.add_table())
         self.tableWidget.doubleClicked.connect(lambda : self.total())
         self.pushButton_23.clicked.connect(lambda : self.tableWidget.clear())
+        self.pushButton_24.clicked.connect(lambda : self.sum_all())
 
 
 
@@ -2873,6 +2908,8 @@ if __name__ == "__main__":
     di2 = QtWidgets.QDialog()
     d2.setupUi(di2)
     ui.pushButton_2.clicked.connect(lambda : di2.exec_())
+    d2.pushButton.clicked.connect(lambda : d2.check_line())
+    d2.pushButton.clicked.connect(lambda : ui.check(d2))
 
     #############################################remove
     d3 = D3.Ui_Del()

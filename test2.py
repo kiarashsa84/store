@@ -58,6 +58,15 @@ class Ui_stuff(object):
         self.retranslateUi(note)
         QtCore.QMetaObject.connectSlotsByName(note)
 
+    def check_line(self):
+        self.t1 = self.lineEdit.text()
+        self.t2 = self.lineEdit_2.text()
+     #   print(self.t1, self.t2)
+        if (self.t1!='' and self.t2!='' ):
+            return(self.t1 , self.t2)
+        else : 
+            return(-1 , -1)
+
     def retranslateUi(self, note):
         _translate = QtCore.QCoreApplication.translate
         note.setWindowTitle(_translate("note", "Add Stuff"))
